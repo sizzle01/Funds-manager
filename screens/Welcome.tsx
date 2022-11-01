@@ -19,7 +19,7 @@ const TopSection = styled.View`
      max-height: 55%;
 `;
 
-const TopImage= styled.Image`
+const TopImage = styled.Image`
 width:100%;
 height: 100%;
 resize-mode: stretch;

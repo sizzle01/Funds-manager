@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 
 //custom Fonts
-import AppLoading from "expo-app-loading";
 import {useFonts} from "expo-font";
+import * as SplashScreen from 'expo-splash-screen';
+
 
 import Welcome from './screens/Welcome';
 
 export default function App() {
-  // let [fontsLoaded] = useFonts({
-  //   "Lato-Bold": require("./managerasset/assets/fonts/Lato-Bold.ttf"),
-  //   "Lato-Regular": require("./managerasset/assets/fonts/Lato-Regular.ttf"),
-  // }); 
+  let [fontsLoaded] = useFonts({
+    "Lato-Bold": require("./managerasset/assets/fonts/Lato-Bold.ttf"),
+    "Lato-Regular": require("./managerasset/assets/fonts/Lato-Regular.ttf"),
+  });
+  
+  useEffect(() =>{
+    async function prepare(){
+      await SplashScreen.preventAutoHideAsync();
+    }
+    prepare();
+  }, []);
 
-  // if(!fontsLoaded){
-  //   return <AppLoading />
-  // }
+  if(!fontsLoaded){
+    return undefined;
+  } else{
+    SplashScreen.hideAsync();
+  }
   return (
    <Welcome />
   );
